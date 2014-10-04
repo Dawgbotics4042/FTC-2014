@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['waitfori2cbus',['waitForI2CBus',['../common_8h.html#a4fa55ac307e9bb34f74514371f527119',1,'common.h']]],
-  ['writei2c',['writeI2C',['../common_8h.html#ad02e06f83b264ee6fc7df41eb4712080',1,'writeI2C(tSensors link, tByteArray &amp;request, tByteArray &amp;reply, int replylen):&#160;common.h'],['../common_8h.html#a98b9f725d95cc626af27f4660a8cddbe',1,'writeI2C(tSensors link, tByteArray &amp;request):&#160;common.h']]]
+  ['i2c_5fmoveservo',['I2C_MoveServo',['../group___n_x_t.html#ga63feb77051fbe7c7b6a946fe996ee869',1,'I2C.h']]],
+  ['i2c_5fwritepmw',['I2C_WritePMW',['../group___n_x_t.html#gafaf3d6e6fbe50344c3c1ff9ed4a98445',1,'I2C.h']]]
 ];

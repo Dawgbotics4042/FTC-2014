@@ -1,9 +1,8 @@
 var searchData=
 [
-  ['tbigbytearray',['tBigByteArray',['../common_8h.html#a54b6c60d5d8ec411391ca920bf8dc97b',1,'common.h']]],
-  ['tbytearray',['tByteArray',['../common_8h.html#aa172ef131853460e5b9f5c6db81d30f4',1,'common.h']]],
-  ['thugebytearray',['tHugeByteArray',['../common_8h.html#acc2928041c5ff8e7f2ddef1e88431e80',1,'common.h']]],
-  ['tintarray',['tIntArray',['../common_8h.html#a79eb917b5a56f0d0e7cf94886c6ac25c',1,'common.h']]],
-  ['tipaddr',['tIPaddr',['../common_8h.html#a1c5690729eb47d01453399497a2b3029',1,'common.h']]],
-  ['tmassivearray',['tMassiveArray',['../common_8h.html#af1da7edf6615d1b2376642de9bbfe449',1,'common.h']]]
+  ['max2',['max2',['../group___n_x_t.html#ga59934691af1d56f6e8f6d46c781bbcb5',1,'common.h']]],
+  ['max3',['max3',['../group___n_x_t.html#gaa0d45e1e67c5cacf5c9251fcd90a971b',1,'common.h']]],
+  ['max_5farr_5fsize',['MAX_ARR_SIZE',['../group___n_x_t.html#gaf80235eb257dc97cb46655fde261602e',1,'common.h']]],
+  ['min2',['min2',['../group___n_x_t.html#gaaff7fb3e43cf77514fd0fec17012e360',1,'common.h']]],
+  ['min3',['min3',['../group___n_x_t.html#gab1e1ffb6aa15887fa3bda4cfdef1f53a',1,'common.h']]]
 ];

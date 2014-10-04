@@ -7,11 +7,11 @@
 
 var indexSectionsWithContent =
 {
-  0: "_cfgmtw",
-  1: "c",
-  2: "cgw",
+  0: "_cfgimntw",
+  1: "ci",
+  2: "cgiw",
   3: "t",
-  4: "_cm",
+  4: "n",
   5: "f"
 };
 
@@ -21,7 +21,7 @@ var indexSectionNames =
   1: "files",
   2: "functions",
   3: "typedefs",
-  4: "defines",
+  4: "groups",
   5: "pages"
 };
 

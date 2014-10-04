@@ -1,4 +1,9 @@
 /**
+ * @addtogroup NXT
+ * @{
+ */
+
+/**
  * \file common.h
  * \brief Commonly used functions used by drivers.
  *
@@ -324,3 +329,7 @@ long getUID()
 
 
 #endif // __COMMON_H__
+
+/**
+ * @}
+ */

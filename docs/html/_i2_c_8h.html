@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.8"/>
-<title>FTC 2014: File List</title>
+<title>FTC 2014: NXT/SAAS/I2C.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -61,11 +61,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
-      <li class="current"><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="files.html"><span>File&#160;List</span></a></li>
       <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
-</div><!-- top -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -80,21 +79,52 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_4c7d68f2c6e2f90cee9098b80c6e23c6.html">NXT</a></li><li class="navelem"><a class="el" href="dir_17de7b8c582515476e77604580acb44c.html">SAAS</a></li>  </ul>
+</div>
+</div><!-- top -->
 <div class="header">
+  <div class="summary">
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">File List</div>  </div>
+<div class="title">I2C.h File Reference<div class="ingroups"><a class="el" href="group___n_x_t.html">NXT</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock">Here is a list of all documented files with brief descriptions:</div><div class="directory">
-<div class="levels">[detail level <span onclick="javascript:toggleLevel(1);">1</span><span onclick="javascript:toggleLevel(2);">2</span><span onclick="javascript:toggleLevel(3);">3</span><span onclick="javascript:toggleLevel(4);">4</span>]</div><table class="directory">
-<tr id="row_0_" class="even"><td class="entry"><span style="width:0px;display:inline-block;">&#160;</span><span id="arr_0_" class="arrow" onclick="toggleFolder('0_')">&#9660;</span><span id="img_0_" class="iconfopen" onclick="toggleFolder('0_')">&#160;</span><a class="el" href="dir_4c7d68f2c6e2f90cee9098b80c6e23c6.html" target="_self">NXT</a></td><td class="desc"></td></tr>
-<tr id="row_0_0_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span id="arr_0_0_" class="arrow" onclick="toggleFolder('0_0_')">&#9660;</span><span id="img_0_0_" class="iconfopen" onclick="toggleFolder('0_0_')">&#160;</span><a class="el" href="dir_17de7b8c582515476e77604580acb44c.html" target="_self">SAAS</a></td><td class="desc"></td></tr>
-<tr id="row_0_0_0_" class="even"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><span id="arr_0_0_0_" class="arrow" onclick="toggleFolder('0_0_0_')">&#9660;</span><span id="img_0_0_0_" class="iconfopen" onclick="toggleFolder('0_0_0_')">&#160;</span><a class="el" href="dir_d5999efc75ab4d6e7ec62e6c19db48fa.html" target="_self">drivers</a></td><td class="desc"></td></tr>
-<tr id="row_0_0_0_0_"><td class="entry"><span style="width:64px;display:inline-block;">&#160;</span><a href="common_8h_source.html"><span class="icondoc"></span></a><a class="el" href="common_8h.html" target="_self">common.h</a></td><td class="desc">Commonly used functions used by drivers </td></tr>
-<tr id="row_0_0_1_" class="even"><td class="entry"><span style="width:48px;display:inline-block;">&#160;</span><a href="_i2_c_8h_source.html"><span class="icondoc"></span></a><a class="el" href="_i2_c_8h.html" target="_self">I2C.h</a></td><td class="desc">Code to run hitechnic controllers over I2C </td></tr>
+
+<p>Code to run hitechnic controllers over I2C.  
+<a href="#details">More...</a></p>
+<div class="textblock"><code>#include &quot;drivers\common.h&quot;</code><br />
+</div>
+<p><a href="_i2_c_8h_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:gafaf3d6e6fbe50344c3c1ff9ed4a98445"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___n_x_t.html#gafaf3d6e6fbe50344c3c1ff9ed4a98445">I2C_WritePMW</a> (tSensors port, int DaisyChainLevel, byte Status)</td></tr>
+<tr class="separator:gafaf3d6e6fbe50344c3c1ff9ed4a98445"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga63feb77051fbe7c7b6a946fe996ee869"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___n_x_t.html#ga63feb77051fbe7c7b6a946fe996ee869">I2C_MoveServo</a> (tSensors port, int DaisyChainLevel, int ServoNumber, byte Position)</td></tr>
+<tr class="separator:ga63feb77051fbe7c7b6a946fe996ee869"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadeb55c21047d9fd90d254891f6060bf9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gadeb55c21047d9fd90d254891f6060bf9"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>I2C_SetMode</b> (tSensors port, int DaisyChainLevel, int MotorNumber, byte Mode)</td></tr>
+<tr class="separator:gadeb55c21047d9fd90d254891f6060bf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad13e6988bda91363daeb6fdd8e995876"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gad13e6988bda91363daeb6fdd8e995876"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>I2C_SetMotorSpeed</b> (tSensors port, int daisychainLevel, int MotorNumber, sbyte Speed)</td></tr>
+<tr class="separator:gad13e6988bda91363daeb6fdd8e995876"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf9f69becd109472241806f7895aed950"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaf9f69becd109472241806f7895aed950"></a>
+long&#160;</td><td class="memItemRight" valign="bottom"><b>I2C_GetEncoderPosition</b> (tSensors port, int daisychainLevel, int MotorNumber)</td></tr>
+<tr class="separator:gaf9f69becd109472241806f7895aed950"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4af2434c6aed59cd5efd92349e0d8870"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga4af2434c6aed59cd5efd92349e0d8870"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>I2C_SetEncoderPosition</b> (tSensors port, int daisychainLevel, int MotorNumber, long EncoderPosition, byte MotorSpeed)</td></tr>
+<tr class="separator:ga4af2434c6aed59cd5efd92349e0d8870"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-</div><!-- directory -->
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Code to run hitechnic controllers over I2C. </p>
+<p>IMPORTANT:</p>
+<p>A. THIS CODE REQUIRES ENCODERS!</p>
+<p>B. Standard method argument order is:</p>
+<p>void foo(tSensors port, int daisychainLevel, int motorNumber, sbyte bar)</p>
+<p>Where foo is your method name and bar is any variable that you need in addition to the standard three. Bar is optional, but your method must always respect motorNumber, port and daisychainLevel. </p>
+</div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated on Sat Oct 4 2014 15:56:01 for FTC 2014 by &#160;<a href="http://www.doxygen.org/index.html">
