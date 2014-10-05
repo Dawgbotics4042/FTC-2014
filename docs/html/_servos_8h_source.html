@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.8"/>
-<title>FTC 2014: FTC-2014</title>
+<title>FTC 2014: NXT/SAAS/Servos.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -38,9 +38,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li class="current"><a href="pages.html"><span>Related&#160;Pages</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="modules.html"><span>Modules</span></a></li>
-      <li><a href="files.html"><span>Files</span></a></li>
+      <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -59,6 +59,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       </li>
     </ul>
   </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
+    </ul>
+  </div>
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -73,15 +79,29 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_4c7d68f2c6e2f90cee9098b80c6e23c6.html">NXT</a></li><li class="navelem"><a class="el" href="dir_17de7b8c582515476e77604580acb44c.html">SAAS</a></li>  </ul>
+</div>
 </div><!-- top -->
 <div class="header">
   <div class="headertitle">
-<div class="title">FTC-2014 </div>  </div>
+<div class="title">Servos.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>FTC 2014 robot code for team Dawgbotics 4042.</p>
-<p>Documentation: <a href="http://dawgbotics4042.github.io/FTC-2014">http://dawgbotics4042.github.io/FTC-2014</a> </p>
-</div></div><!-- contents -->
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="common_8h.html">drivers/common.h</a>&quot;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_i2_c_8h.html">I2C.h</a>&quot;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keywordtype">void</span> Servos_SetPosition(tSensors Port, <span class="keywordtype">int</span> DaisyChainLevel, <span class="keywordtype">int</span> ServoNumber, <span class="keywordtype">int</span> Position)</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;{</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    <a class="code" href="group___n_x_t.html#gafaf3d6e6fbe50344c3c1ff9ed4a98445">I2C_WritePMW</a>(Port, DaisyChainLevel, 0);</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <a class="code" href="group___n_x_t.html#ga63feb77051fbe7c7b6a946fe996ee869">I2C_MoveServo</a>(Port, DaisyChainLevel, ServoNumber, Position);</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;}</div>
+<div class="ttc" id="group___n_x_t_html_ga63feb77051fbe7c7b6a946fe996ee869"><div class="ttname"><a href="group___n_x_t.html#ga63feb77051fbe7c7b6a946fe996ee869">I2C_MoveServo</a></div><div class="ttdeci">void I2C_MoveServo(tSensors port, int DaisyChainLevel, int ServoNumber, byte Position)</div><div class="ttdef"><b>Definition:</b> I2C.h:55</div></div>
+<div class="ttc" id="common_8h_html"><div class="ttname"><a href="common_8h.html">common.h</a></div><div class="ttdoc">Commonly used functions used by drivers. </div></div>
+<div class="ttc" id="group___n_x_t_html_gafaf3d6e6fbe50344c3c1ff9ed4a98445"><div class="ttname"><a href="group___n_x_t.html#gafaf3d6e6fbe50344c3c1ff9ed4a98445">I2C_WritePMW</a></div><div class="ttdeci">void I2C_WritePMW(tSensors port, int DaisyChainLevel, byte Status)</div><div class="ttdef"><b>Definition:</b> I2C.h:34</div></div>
+<div class="ttc" id="_i2_c_8h_html"><div class="ttname"><a href="_i2_c_8h.html">I2C.h</a></div><div class="ttdoc">Code to run hitechnic controllers over I2C. </div></div>
+</div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated on Sat Oct 4 2014 19:21:44 for FTC 2014 by &#160;<a href="http://www.doxygen.org/index.html">
