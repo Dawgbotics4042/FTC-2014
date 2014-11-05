@@ -49,6 +49,17 @@ float _max(float a, float b, float c, float d)
     return a;
 }
 
+/**
+ * Sets the speed for all four motors for a omni dive.
+ *
+ * @param xComp The x component of the vector of the direction
+ * the robot should go.
+ * @param yComp The y component of the vector of the direction
+ * the robot should go.
+ * @param speed The speed the robot should go at. Out of
+ * 255.
+ * @param rot The rotation speed of the robot.
+ */
 void drive(byte xComp, byte yComp, byte speed, byte rot)
 {
     float speedWheel[4];
