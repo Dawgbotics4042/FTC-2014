@@ -3,12 +3,13 @@
 
 #include "Drive.h"
 #include "JoystickDriver.c"
+#include "SQRT.h"
 
 task main()
 {
     waitForStart();
 
-    byte movX, movY, rot;
+    byte movX, movY, rot;	//movX references the x-axis joystick position, movY references y-axis
 
     while( true )
     {
@@ -23,10 +24,10 @@ task main()
         if (movY < 10 && movY > 10)
             movY = 0;
 
-        float speed = sqrt( pow(movX, 2) + pow(movY, 2) ) + abs(rot);
-        if (speed > 127) speed = 127;
 
-        speed = floor(speed);
+        int speed = (int)SQRT[movX][movY] + abs(rot));
+
+        if (speed > 127) speed = 127;
 
         drive( movX, movY, (byte)speed, rot );
     }
