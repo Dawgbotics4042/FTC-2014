@@ -4,10 +4,15 @@ const tSensors MOTOR_PORT = S1;
 
 const float ROT_RATIO = 1;
 
-const float SINS[] = {-1 * sinDegrees(45),
-                        -1 * sinDegrees(135),
-                        -1 * sinDegrees(225),
-                        -1 * sinDegrees(315)};
+/*const float TRIG[] = {	-.7071067812,	// same as SINS[0], SINS[1], COSS[1], and COSS[2]
+												.7071067812};	// same as SINS[2], SINS[3], COSS[0], and COSS[3]
+				indices of both SINS[] and COSS[] have identical values to the contained indices
+*/
+
+const float SINS[] = {	-.7071067812,	//same as--> -1 * sinDegrees(45),
+                        -.7071067812,	//same as--> -1 * sinDegrees(135),
+                        .7071067812,	//same as--> -1 * sinDegrees(225),
+                        .7071067812};	//-1 * sinDegrees(315)};
 
 const float COSS[] = {cosDegrees(45),
                         cosDegrees(135),
@@ -49,17 +54,28 @@ float _max(float a, float b, float c, float d)
     return a;
 }
 
+/**
+ * Sets the speed for all four motors for a omni dive.
+ *
+ * @param xComp The x component of the vector of the direction
+ * the robot should go.
+ * @param yComp The y component of the vector of the direction
+ * the robot should go.
+ * @param speed The speed the robot should go at. Out of
+ * 255.
+ * @param rot The rotation speed of the robot.
+ */
 void drive(byte xComp, byte yComp, byte speed, byte rot)
 {
     float speedWheel[4];
-    for (int n = 0; n<4; n+=1) {
+    for (byte n = 0; n<4; n+=1) {
         speedWheel[n] = (xComp * SINS[n] + yComp * COSS[n] + ROT_RATIO * rot);
     }
 
     float scaler = abs(100.0/_max(speedWheel[0], speedWheel[1], speedWheel[2], speedWheel[3]));
     byte speedFinal[4];
 
-    for (int n = 0; n<4; n+=1) {
+    for (byte n = 0; n<4; n+=1) {
         speedFinal[n] = (byte) (speed/127.0 * scaler * speedWheel[n]);
     }
 
