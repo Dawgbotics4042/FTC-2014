@@ -72,7 +72,7 @@ void drive(byte xComp, byte yComp, byte speed, byte rot)
         speedWheel[n] = (xComp * SINS[n] + yComp * COSS[n] + ROT_RATIO * rot);
     }
 
-    float scaler = abs(100.0/_max(speedWheel[0], speedWheel[1], speedWheel[2], speedWheel[3]));
+    float scaler = abs(127.0/_max(speedWheel[0], speedWheel[1], speedWheel[2], speedWheel[3]));
     byte speedFinal[4];
 
     for (byte n = 0; n<4; n+=1) {

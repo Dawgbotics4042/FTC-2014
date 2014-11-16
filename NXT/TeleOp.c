@@ -4,12 +4,38 @@
 #include "Drive.h"
 #include "JoystickDriver.c"
 #include "SQRT.h"
+#include "gyro.h"
+
+void initRobot()
+{
+	initGyro(S2);
+}
+
+int findSQRT(int a, int b)
+{
+	int first = a ? a < b : b;
+	int second = b ? a < b : a;
+
+	int answer = 0;
+
+	for (int i = 0; i<first; i++) {
+		answer += 129-i;
+	}
+	answer += second;
+	return SQRT[answer];
+}
 
 task main()
 {
+		initRobot();
     waitForStart();
 
-    byte movX, movY, rot;	//movX references the x-axis joystick position, movY references y-axis
+    int curGyro;
+    int oldGyro;
+
+    oldGyro = getGyroData(S1);
+
+    byte movX, movY, movX_f, movY_f, rot;	//movX references the x-axis joystick position, movY references y-axis
 
     while( true )
     {
@@ -17,18 +43,33 @@ task main()
         movY = joystick.joy1_y1-1;
         rot = -1*(joystick.joy1_x2+1);
 
-        if (rot < 10 && rot > 10)
+        curGyro = getGyroData(S1);
+
+        if (rot < 10 && rot > -10)
             rot = 0;
-        if (movX < 10 && movX > 10)
+        if (movX < 10 && movX > -10)
             movX = 0;
-        if (movY < 10 && movY > 10)
+        if (movY < 10 && movY > -10)
             movY = 0;
 
 
-        int speed = (int)SQRT[movX][movY] + abs(rot));
+        if(rot == 0)
+        {
+        	if(abs(curGyro - oldGyro) > 180)
+        		rot = (127/180.0) * abs(curGyro - oldGyro);
+        	else
+        		rot = -1 * abs(curGyro - oldGyro);
+       	}
+        else
+        	oldGyro = curGyro;
+
+				movX_f = movX * cosDegrees(curGyro) + movY * sinDegrees(curGyro);
+				movY_f = movX * -1 * sinDegrees(curGyro) + movY * cosDegrees(curGyro);
+
+        int speed = (int)findSQRT(movX_f, movY_f) + abs(rot);
 
         if (speed > 127) speed = 127;
 
-        drive( movX, movY, (byte)speed, rot );
+        drive( movX_f, movY_f, (byte)speed, rot );
     }
 }

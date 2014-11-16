@@ -51,8 +51,9 @@ void Motors_NewMode(tSensors Port, int DaisyChainLevel, int MotorNumber, byte Mo
 	}
 }
 
-void Motors_SetSpeed(tSensors Port, int DaisyChainLevel, int MotorNumber, int Speed)
+void Motors_SetSpeed(tSensors Port, int DaisyChainLevel, int MotorNumber, byte inSpeed)
 {
+	byte Speed = (byte) round((78.0/127.0) * inSpeed);
 	if(MotorNumber == 1)
 	{
 		Motors_NewMode(Port, DaisyChainLevel, 1, 0b00010001);
