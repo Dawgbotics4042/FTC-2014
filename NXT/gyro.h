@@ -1,3 +1,5 @@
+#ifndef H_GYRO
+#define H_GYRO
 
 #include "htpb.h"
 void initGyro(tSensors port)
@@ -20,3 +22,4 @@ int getGyroData(tSensors port)
 	return (dig << 1) | ang;
 
 }
+#endif

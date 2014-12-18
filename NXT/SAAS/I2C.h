@@ -1,3 +1,5 @@
+#ifndef H_I2C
+#define H_I2C
 /**
  * @addtogroup NXT
  * Robotc code for the NXT
@@ -183,3 +185,4 @@ void I2C_SetEncoderPosition(tSensors port, int daisychainLevel, int MotorNumber,
 /**
  * @}
  */
+#endif

@@ -54,17 +54,18 @@ void Motors_NewMode(tSensors Port, int DaisyChainLevel, int MotorNumber, byte Mo
 void Motors_SetSpeed(tSensors Port, int DaisyChainLevel, int MotorNumber, byte inSpeed)
 {
 	byte Speed = (byte) round((78.0/127.0) * inSpeed);
+	//byte Speed = inSpeed;
 	if(MotorNumber == 1)
 	{
-		Motors_NewMode(Port, DaisyChainLevel, 1, 0b00010001);
-		Motors_NewMode(Port, DaisyChainLevel, 2, Motors_ModeByLocation(Port, DaisyChainLevel, 2) | 0b00010000);
+		Motors_NewMode(Port, DaisyChainLevel, 1, 0b00000001); //0b00010001
+		Motors_NewMode(Port, DaisyChainLevel, 2, Motors_ModeByLocation(Port, DaisyChainLevel, 2) | 0b00000000); //0b00010000
 
 		I2C_SetMotorSpeed(Port, DaisyChainLevel, MotorNumber, Speed);
 	}
 	else if (MotorNumber == 2)
 	{
-		Motors_NewMode(Port, DaisyChainLevel, 1, Motors_ModeByLocation(Port, DaisyChainLevel, 1) | 0b00010000);
-		Motors_NewMode(Port, DaisyChainLevel, 2, 0b00010001);
+		Motors_NewMode(Port, DaisyChainLevel, 1, Motors_ModeByLocation(Port, DaisyChainLevel, 1) | 0b00000000); //0b00010000
+		Motors_NewMode(Port, DaisyChainLevel, 2, 0b00000001); //0b00010001
 
 		I2C_SetMotorSpeed(Port, DaisyChainLevel, MotorNumber, Speed);
 	}
@@ -90,7 +91,7 @@ void Motors_SetPosition(tSensors Port, int DaisyChainLevel, int MotorNumber, lon
 
 void Motors_MoveRotations(tSensors Port, int DaisyChainLevel, int MotorNumber, float Rotations, int Speed)
 {
-	Motors_SetPosition(Port, DaisyChainLevel, MotorNumber, I2C_GetEncoderPosition(Port, DaisyChainLevel, MotorNumber) + (Rotations * 1440), Speed);
+	Motors_SetPosition(Port, DaisyChainLevel, MotorNumber, I2C_GetEncoderPosition(Port, DaisyChainLevel, MotorNumber) + (Rotations * 1120), Speed);
 }
 
 int Motors_GetPosition(tSensors Port, int DaisyChainLevel, int MotorNumber)

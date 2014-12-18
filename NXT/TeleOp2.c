@@ -55,11 +55,9 @@ task main()
 
 		movData data;
 
-		int offset = getOffset();
+		//int offset = getOffset();
 
 		bool fieldoriented = true;
-
-
 
 		//bNxtLCDStatusDisplay = false;
 
@@ -68,14 +66,12 @@ task main()
     	  getJoystickSettings(joystick);
 
     		if (joystick. joy2_TopHat == 0 || joystick. joy2_TopHat == 1 || joystick. joy2_TopHat == 7) { //lift up
-    			Motors_SetSpeed(S1, 1, 1, -127);
-  				Motors_SetSpeed(S1, 1, 2, 127);
-  			}
-  			else if (joystick. joy2_TopHat == 3 || joystick. joy2_TopHat == 4 || joystick. joy2_TopHat == 5){ //lift down
-    	  	Motors_SetSpeed(S1, 1, 1, 127);
-  				Motors_SetSpeed(S1, 1, 2, -127);
-  			}
-  			else {
+    			Motors_SetSpeed(S1, 1, 1, -100);
+  				Motors_SetSpeed(S1, 1, 2, 100);
+  			} else if (joystick. joy2_TopHat == 3 || joystick. joy2_TopHat == 4 || joystick. joy2_TopHat == 5){ //lift down
+    	  	Motors_SetSpeed(S1, 1, 1, 60);
+  				Motors_SetSpeed(S1, 1, 2, -60);
+  			}else {
   				Motors_SetSpeed(S1, 1, 1, 0);
   				Motors_SetSpeed(S1, 1, 2, 0);
   			}
@@ -97,14 +93,14 @@ task main()
   			if (joy2Btn(6) == 1)
   				servo[ball] = 160;
 
-  			//if (joy2Btn(9) == 1)
+  			//if (joy2Btn(8) == 1)
   			//	fieldoriented = false;
 
 
     		// Drive Base
         data.xComp = joystick.joy1_x1;
         data.yComp = joystick.joy1_y1-1;
-        data.rot = -1*(joystick.joy1_x2+1);
+        data.rot = joystick.joy1_x2;
 
         //data.xComp = 127;
         //data.yComp = 0;
@@ -114,7 +110,7 @@ task main()
         data.yComp = (data.yComp != -128 ? data.yComp : data.yComp+1);
         data.rot = (data.rot != -128 ? data.rot : data.rot+1);
 
-        curGyro = getGyroData(S2);
+        //curGyro = getGyroData(S2);
           //this block of if statements is the controller dead-zone
         if (data.rot < 10 && data.rot > -10)
             data.rot = 0;
@@ -128,7 +124,7 @@ task main()
         nxtDisplayBigTextLine(2, "%d", curGyro);
 				wait1Msec(1);
   			nxtDisplayBigTextLine(4, "%d", oldGyro);
-  		//	if (fieldoriented)
+  			//if (fieldoriented)
         //	oldGyro = useGyro(data, oldGyro, curGyro, offset);
 
         if (data.rot < 2 && data.rot > -2)
@@ -139,17 +135,10 @@ task main()
             data.yComp = 0;
 
 
-
         //byte speed = getSqrt(data.xComp, data.yComp) + abs(data.rot);
-
         int speed = (int)(sqrt(data.xComp*data.xComp + data.yComp*data.yComp) + abs(data.rot)); //finds speed (dist formula)
 
         if (speed > 127) speed = 127; //Regulates speed
-
-     		if (joy1Btn(6) == 1 && joy1Btn(5) == 1)
-      		speed = speed / 4;
-      	else if (joy1Btn(5) == 1 || joy1Btn(6) == 1)
-      		speed = speed / 2;
 
         drive(data, (byte)speed);
     }
