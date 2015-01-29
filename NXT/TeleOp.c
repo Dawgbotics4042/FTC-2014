@@ -19,13 +19,13 @@
 //initializes Gyro
 void initializeRobot()
 {
-	initGyro(S2);
+	//initGyro(S2);
 	//servo[stand] = 90;
 	//servo[ball] = 18;
 }
 
 //reads gyro position from a file written in autonomous?
-int getOffset()
+/*int getOffset()
 {
 	TFileHandle hFileHandle;
 	TFileIOResult nIoResult;
@@ -42,22 +42,25 @@ int getOffset()
 
 	return offset;
 }
+*/
 
 task main()
 {
 		initializeRobot();
     waitForStart();
 
-    int curGyro;
-    int oldGyro;
+    //int curGyro;
+    //int oldGyro;
 
-    oldGyro = getGyroData(S2);
+    //oldGyro = getGyroData(S2);
 
 		movData data;
 
-		int offset = getOffset();
+		byte liftSpeed = 0;
 
-		bool fieldoriented = true;
+		//int offset = getOffset();
+
+		//bool fieldoriented = true;
 
 
 
@@ -67,13 +70,20 @@ task main()
     {
     	  getJoystickSettings(joystick);
 
+    	  if (joy2Btn(7) == 1 || joy2Btn(8) == 1)
+    	  	liftSpeed = 60;
+    		else
+    			liftSpeed = 127;
+
+
+
     		if (joystick. joy2_TopHat == 0 || joystick. joy2_TopHat == 1 || joystick. joy2_TopHat == 7) { //lift up
-    			Motors_SetSpeed(S1, 1, 1, -127);
-  				Motors_SetSpeed(S1, 1, 2, 127);
+    			Motors_SetSpeed(S1, 1, 1, -1 * liftSpeed);
+  				Motors_SetSpeed(S1, 1, 2, liftSpeed);
   			}
   			else if (joystick. joy2_TopHat == 3 || joystick. joy2_TopHat == 4 || joystick. joy2_TopHat == 5){ //lift down
-    	  	Motors_SetSpeed(S1, 1, 1, 127);
-  				Motors_SetSpeed(S1, 1, 2, -127);
+    	  	Motors_SetSpeed(S1, 1, 1, liftSpeed);
+  				Motors_SetSpeed(S1, 1, 2, -1 * liftSpeed);
   			}
   			else {
   				Motors_SetSpeed(S1, 1, 1, 0);
@@ -114,7 +124,7 @@ task main()
         data.yComp = (data.yComp != -128 ? data.yComp : data.yComp+1);
         data.rot = (data.rot != -128 ? data.rot : data.rot+1);
 
-        curGyro = getGyroData(S2);
+        //curGyro = getGyroData(S2);
           //this block of if statements is the controller dead-zone
         if (data.rot < 10 && data.rot > -10)
             data.rot = 0;
@@ -123,11 +133,11 @@ task main()
         if (data.yComp < 10 && data.yComp > -10)
             data.yComp = 0;
 
-        nxtDisplayClearTextLine(2);
+        /*nxtDisplayClearTextLine(2);
         nxtDisplayClearTextLine(4);
         nxtDisplayBigTextLine(2, "%d", curGyro);
 				wait1Msec(1);
-  			nxtDisplayBigTextLine(4, "%d", oldGyro);
+  			nxtDisplayBigTextLine(4, "%d", oldGyro);*/
   		//	if (fieldoriented)
         //	oldGyro = useGyro(data, oldGyro, curGyro, offset);
 
@@ -147,7 +157,7 @@ task main()
         if (speed > 127) speed = 127; //Regulates speed
 
      		if (joy1Btn(6) == 1 && joy1Btn(5) == 1)
-      		speed = speed / 4;
+      		speed = speed / 6;
       	else if (joy1Btn(5) == 1 || joy1Btn(6) == 1)
       		speed = speed / 2;
 

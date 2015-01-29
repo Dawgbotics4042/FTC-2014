@@ -1,5 +1,5 @@
 #include "SAAS/Motors.h"
-#include "gyro.h"
+//#include "gyro.h"
 #include "Servos.h"
 #include "findSinCos.h"
 
@@ -46,6 +46,7 @@ void _mtrRightBack(byte speed)
 	Motors_SetSpeed(MOTOR_PORT, 3, 1, speed);
 }
 
+//finds the max of four values
 float _max(float a, float b, float c, float d)
 {
 	a = abs(a);
@@ -61,7 +62,7 @@ float _max(float a, float b, float c, float d)
 	return a;
 }
 
-int useGyro(movData & mov, int oldGyro, int curGyro, int offset)
+/*int useGyro(movData & mov, int oldGyro, int curGyro, int offset)
 {
 	movData movOut;
 
@@ -98,6 +99,7 @@ int useGyro(movData & mov, int oldGyro, int curGyro, int offset)
 
 	return oldGyro;
 }
+*/
 
 /**
 * Sets the speed for all four motors for a omni dive.
@@ -132,11 +134,11 @@ void drive(movData mov, byte speed)
 
 void drive(movData mov, byte speed, long ticks, int offset)
 {
-	initGyro(S2);
-	int curGyro;
-	int oldGyro;
+	//initGyro(S2);
+	//int curGyro;
+	//int oldGyro;
 
-	oldGyro = getGyroData(S2);
+	//oldGyro = getGyroData(S2);
 
 	long mot1 = Motors_GetPosition(MOTOR_PORT, 2, 1);
 	long mot2 = Motors_GetPosition(MOTOR_PORT, 3, 2);
