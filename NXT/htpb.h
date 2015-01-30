@@ -31,14 +31,14 @@ int HTPBreadADC(tSensors link, byte channel, byte width);
  * @return true if no error occured, false if it did
  */
 bool HTPBsetupIO(tSensors link, ubyte mask) {
-  memset(HTPB_I2CRequest, 0, sizeof(tByteArray));
+    memset(HTPB_I2CRequest, 0, sizeof(tByteArray));
 
-  HTPB_I2CRequest[0] = 3;                           // Message size
-  HTPB_I2CRequest[1] = HTPB_I2C_ADDR;               // I2C Address
-  HTPB_I2CRequest[2] = HTPB_OFFSET + HTPB_DIGCTRL;  // Start digital input/output control address
-  HTPB_I2CRequest[3] = mask;                        // The specified digital ports
+    HTPB_I2CRequest[0] = 3;                           // Message size
+    HTPB_I2CRequest[1] = HTPB_I2C_ADDR;               // I2C Address
+    HTPB_I2CRequest[2] = HTPB_OFFSET + HTPB_DIGCTRL;  // Start digital input/output control address
+    HTPB_I2CRequest[3] = mask;                        // The specified digital ports
 
-  return writeI2C(link, HTPB_I2CRequest);
+    return writeI2C(link, HTPB_I2CRequest);
 }
 
 /**
@@ -47,15 +47,15 @@ bool HTPBsetupIO(tSensors link, ubyte mask) {
  * @param mask the specified digital ports
  */
 ubyte HTPBreadIO(tSensors link, ubyte mask) {
-  memset(HTPB_I2CRequest, 0, sizeof(tByteArray));
+    memset(HTPB_I2CRequest, 0, sizeof(tByteArray));
 
-  HTPB_I2CRequest[0] = 2;                         // Message size
-  HTPB_I2CRequest[1] = HTPB_I2C_ADDR;             // I2C Address
-  HTPB_I2CRequest[2] = HTPB_OFFSET + HTPB_DIGIN;  // Start digital output read address
+    HTPB_I2CRequest[0] = 2;                         // Message size
+    HTPB_I2CRequest[1] = HTPB_I2C_ADDR;             // I2C Address
+    HTPB_I2CRequest[2] = HTPB_OFFSET + HTPB_DIGIN;  // Start digital output read address
 
-  writeI2C(link, HTPB_I2CRequest, HTPB_I2CReply, 1);
+    writeI2C(link, HTPB_I2CRequest, HTPB_I2CReply, 1);
 
-  return HTPB_I2CReply[0] & mask;
+    return HTPB_I2CReply[0] & mask;
 }
 
 /**
@@ -66,25 +66,25 @@ ubyte HTPBreadIO(tSensors link, ubyte mask) {
  * @return the value of the ADC channel, or -1 if an error occurred
  */
 int HTPBreadADC(tSensors link, byte channel, byte width) {
-  memset(HTPB_I2CRequest, 0, sizeof(tByteArray));
+    memset(HTPB_I2CRequest, 0, sizeof(tByteArray));
 
-  int _adcVal = 0;
-  HTPB_I2CRequest[0] = 2;                                       // Message size
-  HTPB_I2CRequest[1] = HTPB_I2C_ADDR;                           // I2C Address
-  HTPB_I2CRequest[2] = HTPB_OFFSET + HTPB_A0_U + (channel * 2); // Start digital output read address
-                                                                    // with channel offset
-  if (!writeI2C(link, HTPB_I2CRequest, HTPB_I2CReply, 2))
-    return -1;
+    int _adcVal = 0;
+    HTPB_I2CRequest[0] = 2;                                       // Message size
+    HTPB_I2CRequest[1] = HTPB_I2C_ADDR;                           // I2C Address
+    HTPB_I2CRequest[2] = HTPB_OFFSET + HTPB_A0_U + (channel * 2); // Start digital output read address
+                                                                      // with channel offset
+    if (!writeI2C(link, HTPB_I2CRequest, HTPB_I2CReply, 2))
+        return -1;
 
-  // Convert the bytes into an int
-  // 1st byte contains bits 9-2 of the channel's value
-  // 2nd byte contains bits 1-0 of the channel's value
-  // We'll need to shift the 1st byte left by 2 and or 2nd byte onto it.
-  // If 8 bits is all we want, we just return the first byte and be done with it.
-  if (width == 8)
-    _adcVal = HTPB_I2CReply[0];
-  else
-    _adcVal = (HTPB_I2CReply[0] * 4) + HTPB_I2CReply[1];
+    // Convert the bytes into an int
+    // 1st byte contains bits 9-2 of the channel's value
+    // 2nd byte contains bits 1-0 of the channel's value
+    // We'll need to shift the 1st byte left by 2 and or 2nd byte onto it.
+    // If 8 bits is all we want, we just return the first byte and be done with it.
+    if (width == 8)
+        _adcVal = HTPB_I2CReply[0];
+    else
+        _adcVal = (HTPB_I2CReply[0] * 4) + HTPB_I2CReply[1];
 
-  return _adcVal;
+    return _adcVal;
 }

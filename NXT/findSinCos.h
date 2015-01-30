@@ -2,30 +2,30 @@ float SINSS[91] = {0.0 , 0.01745 , 0.03489 , 0.05233 , 0.06975 , 0.08715 , 0.104
 
 float findSin(int ang)
 {
-	if(ang >= 0 && ang <= 90)
-		return SINSS[ang];
-	else if(ang > 90 && ang <= 180)
-		return SINSS[180 - ang];
-	else if(ang > 180 && ang <= 270)
-		return -1 * SINSS[ang - 180];
-	else if(ang > 270 && ang <= 360)
-		return -1 * SINSS[360 - ang];
-	return 0.0;
+    if(ang >= 0 && ang <= 90)
+        return SINSS[ang];
+    else if(ang > 90 && ang <= 180)
+        return SINSS[180 - ang];
+    else if(ang > 180 && ang <= 270)
+        return -1 * SINSS[ang - 180];
+    else if(ang > 270 && ang <= 360)
+        return -1 * SINSS[360 - ang];
+    return 0.0;
 }
 
 
 float findCos(int ang)
 {
-	ang = ang + 90;
-	if(ang > 360)
-		ang = ang - 360;
-	if(ang >= 0 && ang <= 90)
-		return SINSS[ang];
-	else if(ang > 90 && ang <= 180)
-		return -1 * SINSS[180 - ang];
-	else if(ang > 180 && ang <= 270)
-		return -1 * SINSS[ang - 180];
-	else if(ang > 270 && ang <= 360)
-		return SINSS[360 - ang];
-	return 0.0;
+    ang = ang + 90;
+    if(ang > 360)
+        ang = ang - 360;
+    if(ang >= 0 && ang <= 90)
+        return SINSS[ang];
+    else if(ang > 90 && ang <= 180)
+        return -1 * SINSS[180 - ang];
+    else if(ang > 180 && ang <= 270)
+        return -1 * SINSS[ang - 180];
+    else if(ang > 270 && ang <= 360)
+        return SINSS[360 - ang];
+    return 0.0;
 }

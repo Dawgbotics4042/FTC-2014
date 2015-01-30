@@ -7,20 +7,19 @@
 task main()
 {
 
-  waitForStart();
+    waitForStart();
 
-  while (true)
-  {
-  	int _dirDC = 0;
+    while (true)
+    {
+        int _dirDC = 0;
 
-  	_dirDC = HTIRS2readDCDir(HTIRS2);
-		if (_dirDC < 0)
-			return; // I2C read error occurred
+        _dirDC = HTIRS2readDCDir(HTIRS2);
+        if (_dirDC < 0)
+            return; // I2C read error occurred
 
 
-		nxtDisplayBigTextLine(2, "%d", _dirDC);
-		wait10Msec(1);
-		nxtDisplayClearTextLine(2);
-
-  }
+        nxtDisplayBigTextLine(2, "%d", _dirDC);
+        wait10Msec(1);
+        nxtDisplayClearTextLine(2);
+    }
 }
