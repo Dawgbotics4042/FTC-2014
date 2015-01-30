@@ -9,7 +9,7 @@ task main()
 {
     waitForStart();
 
-    byte movX, movY, rot;	//movX references the x-axis joystick position, movY references y-axis
+    byte movX, movY, rot;//movX references the x-axis joystick position, movY references y-axis
 
     while( true )
     {

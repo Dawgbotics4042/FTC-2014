@@ -59,7 +59,7 @@ void L3G::enableDefault(void)
   // 0x0F = 0b00001111
   // Normal power mode, all axes enabled
 //  writeReg(0x39, 0
-  writeReg(L3G_CTRL_REG1, 0b00001001);
+  writeReg(L3G_CTRL_REG1, 0b00001111);
   writeReg(0x23, 0b00001000);
 //  writeReg(0x21, 0b00000000);
   writeReg(0x24, 0b00010000);
