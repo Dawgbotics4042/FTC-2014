@@ -15,18 +15,17 @@
 
 #include "Drive.h"
 #include "JoystickDriver.c"
-#include "JoystickDriver.c"
 
 //initializes Gyro
 void initializeRobot()
 {
-	//initGyro(S2);
+	initGyro(S2);
 	//servo[stand] = 90;
 	//servo[ball] = 18;
 }
 
 //reads gyro position from a file written in autonomous?
-/*int getOffset()
+int getOffset()
 {
 	TFileHandle hFileHandle;
 	TFileIOResult nIoResult;
@@ -43,17 +42,22 @@ void initializeRobot()
 
 	return offset;
 }
-*/
+
 task main()
 {
 		initializeRobot();
     waitForStart();
 
-    //int curGyro;
-    //int oldGyro;
+    int curGyro;
+    int oldGyro;
 
+    oldGyro = getGyroData(S2);
 
+		movData data;
 
+		//int offset = getOffset();
+
+		bool fieldoriented = true;
 
 		//bNxtLCDStatusDisplay = false;
 
@@ -61,22 +65,13 @@ task main()
     {
     	  getJoystickSettings(joystick);
 
-    	  if (joy2Btn(7) == 1 || joy2Btn(8) == 1)
-    	  	liftSpeed = 60;
-    		else
-    			liftSpeed = 127;
-
-
-
     		if (joystick. joy2_TopHat == 0 || joystick. joy2_TopHat == 1 || joystick. joy2_TopHat == 7) { //lift up
-    			Motors_SetSpeed(S1, 1, 1, -1 * liftSpeed);
-  				Motors_SetSpeed(S1, 1, 2, liftSpeed);
-  			}
-  			else if (joystick. joy2_TopHat == 3 || joystick. joy2_TopHat == 4 || joystick. joy2_TopHat == 5){ //lift down
-    	  	Motors_SetSpeed(S1, 1, 1, liftSpeed);
-  				Motors_SetSpeed(S1, 1, 2, -1 * liftSpeed);
-  			}
-  			else {
+    			Motors_SetSpeed(S1, 1, 1, -100);
+  				Motors_SetSpeed(S1, 1, 2, 100);
+  			} else if (joystick. joy2_TopHat == 3 || joystick. joy2_TopHat == 4 || joystick. joy2_TopHat == 5){ //lift down
+    	  	Motors_SetSpeed(S1, 1, 1, 60);
+  				Motors_SetSpeed(S1, 1, 2, -60);
+  			}else {
   				Motors_SetSpeed(S1, 1, 1, 0);
   				Motors_SetSpeed(S1, 1, 2, 0);
   			}
@@ -98,14 +93,14 @@ task main()
   			if (joy2Btn(6) == 1)
   				servo[ball] = 160;
 
-  			//if (joy2Btn(9) == 1)
+  			//if (joy2Btn(8) == 1)
   			//	fieldoriented = false;
 
 
     		// Drive Base
         data.xComp = joystick.joy1_x1;
         data.yComp = joystick.joy1_y1-1;
-        data.rot = -1*(joystick.joy1_x2+1);
+        data.rot = joystick.joy1_x2;
 
         //data.xComp = 127;
         //data.yComp = 0;
@@ -124,12 +119,12 @@ task main()
         if (data.yComp < 10 && data.yComp > -10)
             data.yComp = 0;
 
-        /*nxtDisplayClearTextLine(2);
+        nxtDisplayClearTextLine(2);
         nxtDisplayClearTextLine(4);
         nxtDisplayBigTextLine(2, "%d", curGyro);
 				wait1Msec(1);
-  			nxtDisplayBigTextLine(4, "%d", oldGyro);*/
-  		//	if (fieldoriented)
+  			nxtDisplayBigTextLine(4, "%d", oldGyro);
+  			//if (fieldoriented)
         //	oldGyro = useGyro(data, oldGyro, curGyro, offset);
 
         if (data.rot < 2 && data.rot > -2)
@@ -140,17 +135,10 @@ task main()
             data.yComp = 0;
 
 
-
         //byte speed = getSqrt(data.xComp, data.yComp) + abs(data.rot);
-
         int speed = (int)(sqrt(data.xComp*data.xComp + data.yComp*data.yComp) + abs(data.rot)); //finds speed (dist formula)
 
         if (speed > 127) speed = 127; //Regulates speed
-
-     		if (joy1Btn(6) == 1 && joy1Btn(5) == 1)
-      		speed = speed / 6;
-      	else if (joy1Btn(5) == 1 || joy1Btn(6) == 1)
-      		speed = speed / 2;
 
         drive(data, (byte)speed);
     }
