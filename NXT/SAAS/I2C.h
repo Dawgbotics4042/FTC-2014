@@ -33,7 +33,7 @@
  * First controller is 1, not 0.
  * @param Status What to set the PMW status to. 0 is on, 170 is on with no timeout, and 255 is off.
  */
-void I2C_WritePMW(tSensors port, int DaisyChainLevel, byte Status)
+void I2C_WritePMW(tSensors port, byte DaisyChainLevel, byte Status)
 {
     tByteArray I2Crequest;
     tByteArray I2Cresponse;
@@ -54,7 +54,7 @@ void I2C_WritePMW(tSensors port, int DaisyChainLevel, byte Status)
  * @param Position The position to set the servo to. From 0-255.
  * It is best to avoid the extremes of that range to avoid hurting the servos.
  */
-void I2C_MoveServo(tSensors port, int DaisyChainLevel, int ServoNumber, byte Position)
+void I2C_MoveServo(tSensors port, byte DaisyChainLevel, int ServoNumber, byte Position)
 {
     tByteArray I2Crequest;
     I2Crequest[0] = 3;
@@ -65,7 +65,7 @@ void I2C_MoveServo(tSensors port, int DaisyChainLevel, int ServoNumber, byte Pos
     writeI2C(port, I2Crequest);
 }
 
-void I2C_SetMode(tSensors port, int DaisyChainLevel, int MotorNumber, byte Mode)
+void I2C_SetMode(tSensors port, byte DaisyChainLevel, int MotorNumber, byte Mode)
 {
     if (MotorNumber == 1) {
         tByteArray I2Crequest;
@@ -84,14 +84,14 @@ void I2C_SetMode(tSensors port, int DaisyChainLevel, int MotorNumber, byte Mode)
     }
 }
 
-void I2C_SetMotorSpeed(tSensors port, int daisychainLevel, int MotorNumber, sbyte Speed)
+void I2C_SetMotorSpeed(tSensors port, byte DaisyChainLevel, int MotorNumber, sbyte Speed)
 {
     tByteArray I2Crequest;
 
     I2Crequest[0] = 3;
 
     // daisychain level 0 will add 0, daisychain level 1 will add 2 to get 0x04, etc.
-    I2Crequest[1] = 0x02 * daisychainLevel;
+    I2Crequest[1] = 0x02 * DaisyChainLevel;
 
     if(MotorNumber == 1) {
         I2Crequest[2] = 0x45;
@@ -109,9 +109,9 @@ void I2C_SetMotorSpeed(tSensors port, int daisychainLevel, int MotorNumber, sbyt
 }
 
 // pass this 1 or 2 for the motor and S[1-4] for the port
-long I2C_GetEncoderPosition(tSensors port, int daisychainLevel, int MotorNumber)
+long I2C_GetEncoderPosition(tSensors port, byte DaisyChainLevel, int MotorNumber)
 {
-    daisychainLevel--;
+    DaisyChainLevel--;
     //initializes the arrays
     tByteArray I2Crequest;
     tByteArray I2Cresponse;
@@ -121,7 +121,7 @@ long I2C_GetEncoderPosition(tSensors port, int daisychainLevel, int MotorNumber)
 
     //sends the adress as the first byte
     //daisychain level 0 will add 0, daisychain level 1 will add 2 to get 0x04, etc.
-    I2Crequest[1] = 0x02 + daisychainLevel*2;
+    I2Crequest[1] = 0x02 + DaisyChainLevel*2;
 
     //sets the starting position to start sending data at
     if (MotorNumber == 1) {
@@ -143,12 +143,12 @@ long I2C_GetEncoderPosition(tSensors port, int daisychainLevel, int MotorNumber)
 }
 
 // motor should be 1 or 2, port should be S[1-4], Input should be the position to move to
-void I2C_SetEncoderPosition(tSensors port, int daisychainLevel, int MotorNumber, long EncoderPosition, byte MotorSpeed)
+void I2C_SetEncoderPosition(tSensors port, byte DaisyChainLevel, int MotorNumber, long EncoderPosition, byte MotorSpeed)
 {
     if (MotorNumber == 1) {
         tByteArray I2Crequest;
         I2Crequest[0] = 6;
-        I2Crequest[1] = 0x02 * daisychainLevel;
+        I2Crequest[1] = 0x02 * DaisyChainLevel;
         I2Crequest[2] = 0x40;
         I2Crequest[3] = (byte)((EncoderPosition >> 24) & 0x000000ff);
         I2Crequest[4] = (byte)((EncoderPosition >> 16) & 0x000000ff);
@@ -158,21 +158,21 @@ void I2C_SetEncoderPosition(tSensors port, int daisychainLevel, int MotorNumber,
 
         tByteArray I2Crequest2;
         I2Crequest2[0] = 3;
-        I2Crequest2[1] = 0x02 * daisychainLevel;
+        I2Crequest2[1] = 0x02 * DaisyChainLevel;
         I2Crequest2[2] = 0x45;
         I2Crequest2[3] = MotorSpeed;
         writeI2C(port, I2Crequest2);
     } else if (MotorNumber == 2) {
         tByteArray I2Crequest;
         I2Crequest[0] = 3;
-        I2Crequest[1] = 0x02 * daisychainLevel;
+        I2Crequest[1] = 0x02 * DaisyChainLevel;
         I2Crequest[2] = 0x46;
         I2Crequest[3] = MotorSpeed;
         writeI2C(port, I2Crequest);
 
         tByteArray I2Crequest2;
         I2Crequest2[0] = 6;
-        I2Crequest2[1] = 0x02 * daisychainLevel;
+        I2Crequest2[1] = 0x02 * DaisyChainLevel;
         I2Crequest2[2] = 0x48;
         I2Crequest2[3] = (byte)((EncoderPosition >> 24) & 0x000000ff);
         I2Crequest2[4] = (byte)((EncoderPosition >> 16) & 0x000000ff);
