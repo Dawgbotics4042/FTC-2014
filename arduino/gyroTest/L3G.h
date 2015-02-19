@@ -54,33 +54,33 @@
 
 class L3G
 {
-  public:
-    typedef struct vector
-    {
-      float x, y, z;
-    } vector;
+    public:
+        typedef struct vector
+        {
+            float x, y, z;
+        } vector;
 
-    vector g; // gyro angular velocity readings
+        vector g; // gyro angular velocity readings
 
-    bool init(byte device = L3GD20_DEVICE, byte sa0 = L3G_SA0_HIGH);
+        bool init(byte device = L3GD20_DEVICE, byte sa0 = L3G_SA0_HIGH);
 
-    void enableDefault(void);
+        void enableDefault(void);
 
-    void writeReg(byte reg, byte value);
-    byte readReg(byte reg);
+        void writeReg(byte reg, byte value);
+        byte readReg(byte reg);
 
-    void read(void);
+        void read(void);
 
-    // vector functions
-    static void vector_cross(const vector *a, const vector *b, vector *out);
-    static float vector_dot(const vector *a,const vector *b);
-    static void vector_normalize(vector *a);
+        // vector functions
+        static void vector_cross(const vector *a, const vector *b, vector *out);
+        static float vector_dot(const vector *a,const vector *b);
+        static void vector_normalize(vector *a);
 
-  private:
-      byte _device; // chip type (4200D or D20)
-      byte address;
+    private:
+        byte _device; // chip type (4200D or D20)
+        byte address;
 
-      bool autoDetectAddress(void);
+        bool autoDetectAddress(void);
 };
 
 #endif

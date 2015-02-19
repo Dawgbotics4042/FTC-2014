@@ -145,17 +145,13 @@ Functions</h2></td></tr>
 <tr class="separator:gafaf3d6e6fbe50344c3c1ff9ed4a98445"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga63feb77051fbe7c7b6a946fe996ee869"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___n_x_t.html#ga63feb77051fbe7c7b6a946fe996ee869">I2C_MoveServo</a> (tSensors port, int DaisyChainLevel, int ServoNumber, byte Position)</td></tr>
 <tr class="separator:ga63feb77051fbe7c7b6a946fe996ee869"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gadeb55c21047d9fd90d254891f6060bf9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gadeb55c21047d9fd90d254891f6060bf9"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>I2C_SetMode</b> (tSensors port, int DaisyChainLevel, int MotorNumber, byte Mode)</td></tr>
+<tr class="memitem:gadeb55c21047d9fd90d254891f6060bf9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___n_x_t.html#gadeb55c21047d9fd90d254891f6060bf9">I2C_SetMode</a> (tSensors port, int DaisyChainLevel, int MotorNumber, byte Mode)</td></tr>
 <tr class="separator:gadeb55c21047d9fd90d254891f6060bf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad13e6988bda91363daeb6fdd8e995876"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gad13e6988bda91363daeb6fdd8e995876"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>I2C_SetMotorSpeed</b> (tSensors port, int daisychainLevel, int MotorNumber, sbyte Speed)</td></tr>
+<tr class="memitem:gad13e6988bda91363daeb6fdd8e995876"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___n_x_t.html#gad13e6988bda91363daeb6fdd8e995876">I2C_SetMotorSpeed</a> (tSensors port, int daisychainLevel, int MotorNumber, sbyte Speed)</td></tr>
 <tr class="separator:gad13e6988bda91363daeb6fdd8e995876"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaf9f69becd109472241806f7895aed950"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaf9f69becd109472241806f7895aed950"></a>
-long&#160;</td><td class="memItemRight" valign="bottom"><b>I2C_GetEncoderPosition</b> (tSensors port, int daisychainLevel, int MotorNumber)</td></tr>
+<tr class="memitem:gaf9f69becd109472241806f7895aed950"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___n_x_t.html#gaf9f69becd109472241806f7895aed950">I2C_GetEncoderPosition</a> (tSensors port, int daisychainLevel, int MotorNumber)</td></tr>
 <tr class="separator:gaf9f69becd109472241806f7895aed950"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga4af2434c6aed59cd5efd92349e0d8870"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga4af2434c6aed59cd5efd92349e0d8870"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>I2C_SetEncoderPosition</b> (tSensors port, int daisychainLevel, int MotorNumber, long EncoderPosition, byte MotorSpeed)</td></tr>
+<tr class="memitem:ga4af2434c6aed59cd5efd92349e0d8870"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___n_x_t.html#ga4af2434c6aed59cd5efd92349e0d8870">I2C_SetEncoderPosition</a> (tSensors port, int daisychainLevel, int MotorNumber, long EncoderPosition, byte MotorSpeed)</td></tr>
 <tr class="separator:ga4af2434c6aed59cd5efd92349e0d8870"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -469,6 +465,48 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>I2C_SetEncoderPositio
 
 </div>
 </div>
+<a class="anchor" id="gaf9f69becd109472241806f7895aed950"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">long I2C_GetEncoderPosition </td>
+          <td>(</td>
+          <td class="paramtype">tSensors&#160;</td>
+          <td class="paramname"><em>port</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>daisychainLevel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>MotorNumber</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get the encoder value for a given motor.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">port</td><td>The port on the NXT. Ex: S1,S2... </td></tr>
+    <tr><td class="paramname">DaisyChainLevel</td><td>The daisy chain level of the controller wanted. First controller is 1, not 0. </td></tr>
+    <tr><td class="paramname">MotorNumber</td><td>Choose motor number 1 or 2 on the controller. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The encoder value of the motor. </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="ga63feb77051fbe7c7b6a946fe996ee869"></a>
 <div class="memitem">
 <div class="memproto">
@@ -511,6 +549,157 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>I2C_SetEncoderPositio
     <tr><td class="paramname">DaisyChainLevel</td><td>The daisy chain level of the controller wanted. First controller is 1, not 0. </td></tr>
     <tr><td class="paramname">ServoNumber</td><td>Choose servo number 1 or 2 on the controller. </td></tr>
     <tr><td class="paramname">Position</td><td>The position to set the servo to. From 0-255. It is best to avoid the extremes of that range to avoid hurting the servos. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga4af2434c6aed59cd5efd92349e0d8870"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void I2C_SetEncoderPosition </td>
+          <td>(</td>
+          <td class="paramtype">tSensors&#160;</td>
+          <td class="paramname"><em>port</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>daisychainLevel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>MotorNumber</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">long&#160;</td>
+          <td class="paramname"><em>EncoderPosition</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">byte&#160;</td>
+          <td class="paramname"><em>MotorSpeed</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Move motor to specified encoder value.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">port</td><td>The port on the NXT. Ex: S1,S2... </td></tr>
+    <tr><td class="paramname">DaisyChainLevel</td><td>The daisy chain level of the controller wanted. First controller is 1, not 0. </td></tr>
+    <tr><td class="paramname">MotorNumber</td><td>Choose motor number 1 or 2 on the controller. </td></tr>
+    <tr><td class="paramname">EncoderPosition</td><td>The desired motor encoder value. </td></tr>
+    <tr><td class="paramname">MotorSpeed</td><td>The speed the motor will run to get there. Between -100 and 100. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gadeb55c21047d9fd90d254891f6060bf9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void I2C_SetMode </td>
+          <td>(</td>
+          <td class="paramtype">tSensors&#160;</td>
+          <td class="paramname"><em>port</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>DaisyChainLevel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>MotorNumber</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">byte&#160;</td>
+          <td class="paramname"><em>Mode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Sets the mode of the given motor. See <a href="http://www.patronumbots.com/uploads/1/3/1/6/13161577/hitechnic_motor_controller_-_brief_v1.3.pdf">http://www.patronumbots.com/uploads/1/3/1/6/13161577/hitechnic_motor_controller_-_brief_v1.3.pdf</a> for details.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">port</td><td>The port on the NXT. Ex: S1,S2... </td></tr>
+    <tr><td class="paramname">DaisyChainLevel</td><td>The daisy chain level of the controller wanted. First controller is 1, not 0. </td></tr>
+    <tr><td class="paramname">MotorNumber</td><td>Choose motor number 1 or 2 on the controller. </td></tr>
+    <tr><td class="paramname">Mode</td><td>The mode of the motor. See section "Channel mode" on page 3 of above document for details. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gad13e6988bda91363daeb6fdd8e995876"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void I2C_SetMotorSpeed </td>
+          <td>(</td>
+          <td class="paramtype">tSensors&#160;</td>
+          <td class="paramname"><em>port</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>daisychainLevel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>MotorNumber</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">sbyte&#160;</td>
+          <td class="paramname"><em>Speed</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Sets the speed of a motor</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">port</td><td>The port on the NXT. Ex: S1,S2... </td></tr>
+    <tr><td class="paramname">DaisyChainLevel</td><td>The daisy chain level of the controller wanted. First controller is 1, not 0. </td></tr>
+    <tr><td class="paramname">MotorNumber</td><td>Choose motor number 1 or 2 on the controller. </td></tr>
+    <tr><td class="paramname">Speed</td><td>The wanted speed of the motor. From -100 to 100. </td></tr>
   </table>
   </dd>
 </dl>
@@ -666,7 +855,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>I2C_SetEncoderPositio
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Oct 4 2014 15:56:01 for FTC 2014 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Oct 4 2014 19:21:44 for FTC 2014 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

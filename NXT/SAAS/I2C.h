@@ -65,7 +65,19 @@ void I2C_MoveServo(tSensors port, byte DaisyChainLevel, int ServoNumber, byte Po
     writeI2C(port, I2Crequest);
 }
 
-void I2C_SetMode(tSensors port, byte DaisyChainLevel, int MotorNumber, byte Mode)
+/**
+ * Sets the mode of the given motor. See
+ * http://www.patronumbots.com/uploads/1/3/1/6/13161577/hitechnic_motor_controller_-_brief_v1.3.pdf
+ * for details.
+ *
+ * @param port The port on the NXT. Ex: S1,S2...
+ * @param DaisyChainLevel The daisy chain level of the controller wanted.
+ * First controller is 1, not 0.
+ * @param MotorNumber Choose motor number 1 or 2 on the controller.
+ * @param Mode The mode of the motor. See section "Channel mode" on page
+ * 3 of above document for details.
+ */
+void I2C_SetMode(tSensors port, int DaisyChainLevel, int MotorNumber, byte Mode)
 {
     if (MotorNumber == 1) {
         tByteArray I2Crequest;
@@ -84,7 +96,16 @@ void I2C_SetMode(tSensors port, byte DaisyChainLevel, int MotorNumber, byte Mode
     }
 }
 
-void I2C_SetMotorSpeed(tSensors port, byte DaisyChainLevel, int MotorNumber, sbyte Speed)
+/**
+ * Sets the speed of a motor
+ *
+ * @param port The port on the NXT. Ex: S1,S2...
+ * @param DaisyChainLevel The daisy chain level of the controller wanted.
+ * First controller is 1, not 0.
+ * @param MotorNumber Choose motor number 1 or 2 on the controller.
+ * @param Speed The wanted speed of the motor. From -100 to 100.
+ */
+void I2C_SetMotorSpeed(tSensors port, int daisychainLevel, int MotorNumber, sbyte Speed)
 {
     tByteArray I2Crequest;
 
@@ -108,8 +129,16 @@ void I2C_SetMotorSpeed(tSensors port, byte DaisyChainLevel, int MotorNumber, sby
     writeI2C(port, I2Crequest);
 }
 
-// pass this 1 or 2 for the motor and S[1-4] for the port
-long I2C_GetEncoderPosition(tSensors port, byte DaisyChainLevel, int MotorNumber)
+/**
+ * Get the encoder value for a given motor.
+ *
+ * @param port The port on the NXT. Ex: S1,S2...
+ * @param DaisyChainLevel The daisy chain level of the controller wanted.
+ * First controller is 1, not 0.
+ * @param MotorNumber Choose motor number 1 or 2 on the controller.
+ * @return The encoder value of the motor.
+ */
+long I2C_GetEncoderPosition(tSensors port, int daisychainLevel, int MotorNumber)
 {
     DaisyChainLevel--;
     //initializes the arrays
@@ -142,8 +171,17 @@ long I2C_GetEncoderPosition(tSensors port, byte DaisyChainLevel, int MotorNumber
     //return ConvertBytesToLong(I2Cresponse[0], I2Cresponse[1], I2Cresponse[2], I2Cresponse[3]);
 }
 
-// motor should be 1 or 2, port should be S[1-4], Input should be the position to move to
-void I2C_SetEncoderPosition(tSensors port, byte DaisyChainLevel, int MotorNumber, long EncoderPosition, byte MotorSpeed)
+/**
+ * Move motor to specified encoder value.
+ *
+ * @param port The port on the NXT. Ex: S1,S2...
+ * @param DaisyChainLevel The daisy chain level of the controller wanted.
+ * First controller is 1, not 0.
+ * @param MotorNumber Choose motor number 1 or 2 on the controller.
+ * @param EncoderPosition The desired motor encoder value.
+ * @param MotorSpeed The speed the motor will run to get there. Between -100 and 100.
+ */
+void I2C_SetEncoderPosition(tSensors port, int daisychainLevel, int MotorNumber, long EncoderPosition, byte MotorSpeed)
 {
     if (MotorNumber == 1) {
         tByteArray I2Crequest;

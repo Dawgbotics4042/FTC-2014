@@ -5,10 +5,9 @@
 
 task main()
 {
-	while(true)
-	{
-    Motors_SetSpeed(S1, 1, 1, -100);
-  	Motors_SetSpeed(S1, 1, 2, 100);
-  }
-
+    while(true)
+    {
+        Motors_SetSpeed(S1, 1, 1, 60);
+        Motors_SetSpeed(S1, 1, 2, -60);
+    }
 }
