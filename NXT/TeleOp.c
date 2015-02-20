@@ -53,7 +53,15 @@ task main()
     //int oldGyro;
 
 
+    //oldGyro = getGyroData(S2);
 
+    movData data;
+
+    byte liftSpeed = 0;
+
+    //int offset = getOffset();
+
+    //bool fieldoriented = true;
 
     //bNxtLCDStatusDisplay = false;
 
