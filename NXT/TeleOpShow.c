@@ -58,6 +58,11 @@ task main()
     movData data;
 
     byte liftSpeed = 0;
+    byte btnOldIntake = 0;
+    byte btnOldControl = 0;
+    byte physicalIntake = 0;
+    byte physicalControl = 0;
+
 
     //int offset = getOffset();
 
@@ -69,18 +74,18 @@ task main()
     {
         getJoystickSettings(joystick);
 
-        if (joy2Btn(7) == 1 || joy2Btn(8) == 1)
+        if (joy1Btn(7) == 1 || joy1Btn(8) == 1)
             liftSpeed = 60;
         else
             liftSpeed = 127;
 
 
 
-        if (joystick. joy2_TopHat == 0 || joystick. joy2_TopHat == 1 || joystick. joy2_TopHat == 7) { //lift up
+        if (joystick. joy1_TopHat == 0 || joystick. joy1_TopHat == 1 || joystick. joy1_TopHat == 7) { //lift up
             Motors_SetSpeed(S1, 1, 1, -1 * liftSpeed);
             Motors_SetSpeed(S1, 1, 2, liftSpeed);
         }
-        else if (joystick. joy2_TopHat == 3 || joystick. joy2_TopHat == 4 || joystick. joy2_TopHat == 5){ //lift down
+        else if (joystick. joy1_TopHat == 3 || joystick. joy1_TopHat == 4 || joystick. joy1_TopHat == 5){ //lift down
             Motors_SetSpeed(S1, 1, 1, liftSpeed);
             Motors_SetSpeed(S1, 1, 2, -1 * liftSpeed);
         }
@@ -89,21 +94,22 @@ task main()
             Motors_SetSpeed(S1, 1, 2, 0);
         }
 
-        if (joy2Btn(4) == 1)  //ball intake
-            Motors_SetSpeed(S1, 4, 1, 60);
-        else if (joy2Btn(2) == 1)
-            Motors_SetSpeed(S1, 4, 1, -60);
-        else
-            Motors_SetSpeed(S1, 4, 1, 0);
+            if (joy1Btn(4) == 1)  //ball intake
+                Motors_SetSpeed(S1, 4, 1, 60);
+            else if (joy1Btn(2) == 1)
+                Motors_SetSpeed(S1, 4, 1, -60);
+            else
+                Motors_SetSpeed(S1, 4, 1, 0);
 
-        if (joy2Btn(3) == 1)  //kickstand knocker-downer
+
+        if (joy1Btn(3) == 1)  //kickstand knocker-downer
             servo[stand] = 240;
-        if (joy2Btn(1) == 1)
+        if (joy1Btn(1) == 1)
             servo[stand] = 150;
 
-        if (joy2Btn(5) == 1)  //dropper
+        if (joy1Btn(5) == 1)  //dropper
             servo[ball] = 18;
-        if (joy2Btn(6) == 1)
+        if (joy1Btn(6) == 1)
             servo[ball] = 160;
 
         //if (joy2Btn(9) == 1)
@@ -115,6 +121,29 @@ task main()
         data.yComp = joystick.joy1_y1-1;
         data.rot = (-1*(joystick.joy1_x2))-1;
 
+        if(joy1Btn(9) == 1 && btnOldControl == 0 && physicalControl == 0)
+            physicalControl = 1;
+        else if(joy1Btn(9) == 1 && btnOldControl == 0 && physicalControl == 1)
+            physicalControl = 0;
+
+        if(physicalControl == 0){
+            data.xComp = ((joystick.joy2_x1)/2);
+            data.yComp = ((joystick.joy2_y1-1)/2);
+            data.rot = (((-1*(joystick.joy2_x2))-1)/2)
+
+            if (joy2Btn(3) == 1)  //dropper
+                servo[ball] = 18;
+            if (joy2Btn(1) == 1)
+                servo[ball] = 160;
+
+            if (joy2Btn(4) == 1)  //kickstand knocker-downer
+                servo[stand] = 240;
+            if (joy2Btn(2) == 1)
+                servo[stand] = 150;
+        }
+
+        btnOldIntake = joy2Btn(2);
+        btnOldControl = joy1Btn(9);
 
         //data.xComp = 127;
         //data.yComp = 0;
@@ -156,9 +185,9 @@ task main()
 
         if (speed > 127) speed = 127; //Regulates speed
 
-        if (joy1Btn(6) == 1 && joy1Btn(5) == 1)
+        if (joy1Btn(7) == 1 && joy1Btn(8) == 1)
             speed = speed / 6;
-        else if (joy1Btn(5) == 1 || joy1Btn(6) == 1)
+        else if (joy1Btn(8) == 1 || joy1Btn(7) == 1)
             speed = speed / 2;
 
         drive(data, (byte)speed);

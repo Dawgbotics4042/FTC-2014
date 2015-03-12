@@ -68,7 +68,7 @@ task main()
     mov.yComp = 0;
     mov.rot = 0;
 
-    drive(mov, 65, 3400, 0); // forward
+    drive(mov, 65, 3000, 0); // forward
 
     // Read the ir signal
     for (int i = 0; i<10; i++) {
@@ -134,7 +134,7 @@ task main()
     mov.xComp = -127;
     mov.yComp = 0;
     mov.rot = 0;
-    drive(mov, 30, 420, 0);
+    drive(mov, 30, 250, 0);
 
     ClearTimer(T1);
 
@@ -190,8 +190,10 @@ task main()
         //nxtDisplayClearTextLine(2);
     //nxtDisplayBigTextLine(2, "%d", _dirAC);
     }
-    drive(mov, 20, 500, 0);
+    drive(mov, 20, 2000, 0);
+    drive(mov, 20, 100, 0);
     drive(mov, 0);
+
 
     //drop
     servo[ball] = 160;
