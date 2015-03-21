@@ -2,15 +2,6 @@
 #include <Wire.h>
 #include <math.h>
 
-// Defines ////////////////////////////////////////////////////////////////
-
-// The Arduino two-wire interface uses a 7-bit number for the address,
-// and sets the last bit correctly based on reads and writes
-#define L3G4200D_ADDRESS_SA0_LOW  (0xD0 >> 1)
-#define L3G4200D_ADDRESS_SA0_HIGH (0xD2 >> 1)
-#define L3GD20_ADDRESS_SA0_LOW    (0xD4 >> 1)
-#define L3GD20_ADDRESS_SA0_HIGH   (0xD6 >> 1)
-
 // Public Methods //////////////////////////////////////////////////////////////
 
 bool L3G::init(byte device, byte sa0)
@@ -50,7 +41,6 @@ bool L3G::init(byte device, byte sa0)
     }
 }
 
-// Turns on the L3G's gyro and places it in normal mode.
 void L3G::enableDefault(void)
 {
     // 0x0F = 0b00001111
@@ -63,7 +53,6 @@ void L3G::enableDefault(void)
     //2000: 00100000
 }
 
-// Writes a gyro register
 void L3G::writeReg(byte reg, byte value)
 {
     Wire.beginTransmission(address);
@@ -72,7 +61,6 @@ void L3G::writeReg(byte reg, byte value)
     Wire.endTransmission();
 }
 
-// Reads a gyro register
 byte L3G::readReg(byte reg)
 {
     byte value;
@@ -87,7 +75,6 @@ byte L3G::readReg(byte reg)
     return value;
 }
 
-// Reads the 3 gyro channels and stores them in vector g
 void L3G::read()
 {
     Wire.beginTransmission(address);

@@ -1,3 +1,10 @@
+/**
+ * @addtogroup arduino
+ * @{
+ * @addtogroup gyroTest
+ * \brief This is the code that works with the gyro, and sends values to the NXT.
+ * @{
+ */
 #include "L3G.h"
 #include <Wire.h>
 
@@ -92,6 +99,10 @@ void loop()
     digitalWrite(13, HIGH);
 }
 
+/**
+ * Connects to the computer with a serial connection.
+ * Function blocks until connection is formed.
+ */
 void establishContact() {
     while (Serial.available() <= 0) {
         Serial.print('A');   // send a capital A
@@ -99,6 +110,10 @@ void establishContact() {
     }
 }
 
+/**
+ * Sends the rotation value to the prototype board,
+ * and eventually the NXT.
+ */
 void outputNumber(double rot) {
     short num = (short) round(rot);
     if (num & 1)
@@ -113,5 +128,7 @@ void outputNumber(double rot) {
     }
 }
 
-
-
+/**
+ * @}
+ * @}
+ */

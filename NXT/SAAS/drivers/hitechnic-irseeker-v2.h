@@ -35,10 +35,6 @@
  * \author Xander Soldaat (mightor_at_gmail.com)
  * \date 06 April 2010
  * \version 0.5
- * \example hitechnic-irseeker-v2-test1.c
- * \example hitechnic-irseeker-v2-enhanced-test1.c
- * \example hitechnic-irseeker-v2-SMUX-test1.c
- * \example hitechnic-irseeker-v2-enhanced-SMUX-test1.c
  */
 
 #pragma systemFile
